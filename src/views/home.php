@@ -17,6 +17,7 @@
         <ul>
             <li><a href="/products">Lista de Produtos</a></li>
             <li><a href="/product/create">Criação de Produtos</a></li>
+            <li><a href="/product-type/create">Cadastrar tipo de produto</a></li>
             <li><a href="/cart">Carrinho</a></li>
         </ul>
     </div>

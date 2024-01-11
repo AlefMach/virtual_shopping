@@ -1,7 +1,9 @@
 CREATE TABLE IF NOT EXISTS product_type (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    tax_rate DECIMAL(5,2) NOT NULL
+    tax_rate DECIMAL(5,2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS product (
@@ -15,6 +17,8 @@ CREATE TABLE IF NOT EXISTS product (
     FOREIGN KEY (type_id) REFERENCES product_type(id)
 );
 
+DROP FUNCTION IF EXISTS update_product_updated_at CASCADE;
+
 CREATE OR REPLACE FUNCTION update_product_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -22,6 +26,8 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS product_update_trigger ON product;
 
 CREATE TRIGGER product_update_trigger
 BEFORE UPDATE ON product
@@ -46,6 +52,7 @@ CREATE TABLE IF NOT EXISTS image (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES product(id)
 );
+
 
 INSERT INTO product_type (name, tax_rate) VALUES
     ('Eletrônicos', 18.00),
