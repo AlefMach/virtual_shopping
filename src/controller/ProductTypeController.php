@@ -11,15 +11,14 @@ class ProductTypeController
 
     public function save()
     {
-        // Lógica para processar o salvamento do tipo de produto
+        // Logic for processing product type saving
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Obtém os dados do formulário
+            // Gets form data
             $name = $_POST['name'];
             $taxRate = $_POST['tax_rate'];
 
-            // Validação básica (pode ser mais robusta conforme suas necessidades)
+            // Basic validation (can be more robust depending on your needs)
             if (empty($name) || empty($taxRate)) {
-                // Trate erros de validação aqui (redirecionamento ou exibição de mensagens de erro)
                 header('Location: /product-type/create');
                 exit();
             }
@@ -31,11 +30,11 @@ class ProductTypeController
 
             $product_type->save();
             
-            // Redirecione para a página de cadastro de tipo de produto
+            // Redirect to the product type registration page
             header('Location: /product-type/create?success=true');
             exit();
         } else {
-            // Se a requisição não for do tipo POST, redirecione para a página de cadastro de tipo de produto
+            // If the request is not of type POST, Redirect to the product type registration page
             header('Location: /product-type/create');
             exit();
         }
