@@ -21,8 +21,6 @@
         <label for="type_id">Categoria:</label>
         <select name="type_id" id="type_id" required>
             <?php
-                 include './model/ProductTypeModel.php';
-
                 // Recupere os tipos de produto da tabela product_type
                 $productTypes = ProductTypeModel::all();
 

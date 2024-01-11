@@ -1,10 +1,13 @@
 <?php
 
 include './model/ProductModel.php';
+include './model/ProductTypeModel.php';
+
 
 class ProductController {
     public function index() {
         $products = Product::all();
+        $products_type = ProductTypeModel::all();
 
         include './views/product/show.php';
     }
