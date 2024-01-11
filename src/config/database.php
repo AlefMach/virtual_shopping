@@ -1,8 +1,10 @@
 <?php
 
-require_once './vendor/autoload.php';
+include './vendor/autoload.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ .'/..');
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$dotenv = Dotenv\Dotenv::createImmutable('./');
 $dotenv->load();
 
 
@@ -11,10 +13,19 @@ $dbname = getenv('DB_NAME');
 $user = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
 
-try {
-    $pdo = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    return;
-} catch (PDOException $e) {
-    die("Error connecting to the database: " . $e->getMessage());
-}
+$capsule = new Capsule;
+
+$capsule->addConnection([
+    'driver'    => 'pgsql',
+    'host'      => $host,
+    'database'  => $dbname,
+    'username'  => $user,
+    'password'  => $password,
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+
+// Configurar o Eloquent
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
