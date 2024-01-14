@@ -1,5 +1,7 @@
 <?php
 
+include './models/ProductTypeModel.php';
+
 /**
  * Class ProductTypeController
  *

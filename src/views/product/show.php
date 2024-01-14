@@ -27,7 +27,7 @@
     <tbody>
         <!-- Loop through products and display data -->
         <?php foreach ($products as $product): ?>
-            <?php foreach ($products_type as $product_type): ?>
+            <?php foreach ($productTypes as $product_type): ?>
                 <?php if ($product->type_id == $product_type->id): ?>
                     <tr>
                         <td><?php echo $product->name; ?></td>

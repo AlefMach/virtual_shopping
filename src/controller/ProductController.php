@@ -1,5 +1,8 @@
 <?php
 
+include './models/ProductTypeModel.php';
+include './models/ProductModel.php';
+
 /**
  * Class ProductController
  *
@@ -14,7 +17,7 @@ class ProductController {
      */
     public function index() {
         // Fetch the list of products and product types from the database
-        $products = Product::all();
+        $products = ProductModel::all();
         $productTypes = ProductTypeModel::all();
 
         // Include the HTML view file for displaying the list of products.
@@ -57,7 +60,7 @@ class ProductController {
         move_uploaded_file($imageTmp, $imagePath . $imageName);
 
         // Create a new instance of the Product using Eloquent
-        $product = new Product([
+        $product = new ProductModel([
             'name' => $name,
             'type_id' => $typeId,
             'price' => $price,

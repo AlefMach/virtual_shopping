@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * Eloquent Model representing the 'product' table in the database.
  */
-class Product extends Model {
+class ProductModel extends Model {
     /**
      * The table associated with the model.
      *
