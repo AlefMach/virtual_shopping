@@ -1,6 +1,9 @@
 <?php
 
 include './models/ProductTypeModel.php';
+include './http/middlewares/AuthMiddleware.php';
+
+AuthMiddleware::handle();
 
 /**
  * Class ProductTypeController

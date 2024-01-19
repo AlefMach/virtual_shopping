@@ -12,7 +12,7 @@ class Router {
             $controllerName = $this->routes[$route]['controller'];
             $action = $this->routes[$route]['action'];
 
-            require_once "controller/$controllerName.php";
+            require_once "http/controller/$controllerName.php";
 
             $controller = new $controllerName();
             $controller->$action();

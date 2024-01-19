@@ -53,6 +53,14 @@ CREATE TABLE IF NOT EXISTS image (
     FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 
 INSERT INTO product_type (name, tax_rate) VALUES
     ('Eletrônicos', 18.00),
