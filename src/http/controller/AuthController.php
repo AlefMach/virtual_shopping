@@ -31,7 +31,7 @@ class AuthController {
                 $_SESSION['username'] = $_POST['username']; // Replace 'username' with the correct variable
 
                 // Redirect to the dashboard or another page after login
-                header('Location: /'); // Replace '/dashboard' with the desired URL
+                header('Location: /'); // Replace '/' with the desired URL
                 exit();
             } else {
                 // Invalid credentials, redirect back to the login page
