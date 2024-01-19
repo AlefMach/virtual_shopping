@@ -14,3 +14,9 @@ $router->addRoute('sales', 'SaleController', 'index');
 
 $router->addRoute('product-type/create', 'ProductTypeController', 'create');
 $router->addRoute('product-type/save', 'ProductTypeController', 'save');
+
+$router->addRoute('login', 'AuthController', 'login');
+$router->addRoute('logout', 'AuthController', 'logout');
+
+$router->addRoute('register', 'UserController', 'index');
+$router->addRoute('register/create', 'UserController', 'create');

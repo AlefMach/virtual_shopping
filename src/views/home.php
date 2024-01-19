@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="box_home">
-        <h2>Bem-vindo à Página Inicial</h2>
+        <h2>Bem-vindo à Página Inicial <?php echo $_SESSION['username']; ?></h2>
         
         <ul>
             <li><a href="/products">Lista de Produtos</a></li>

@@ -1,5 +1,9 @@
 <?php
 
+include './http/middlewares/AuthMiddleware.php';
+
+AuthMiddleware::handle();
+
 /**
  * Class HomeController
  *
