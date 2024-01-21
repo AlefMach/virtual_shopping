@@ -20,7 +20,7 @@ class ProductModel extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'type_id', 'price', 'image_path'];
+    protected $fillable = ['name', 'type_id', 'price', 'image_path', 'user_id'];
 
     /**
      * Relationship with the ProductTypeModel.
@@ -31,5 +31,17 @@ class ProductModel extends Model {
      */
     public function productType() {
         return $this->belongsTo(ProductTypeModel::class, 'type_id');
+    }
+
+    /**
+     * Relationship with the UserModel.
+     *
+     * Each product belongs to a product type.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(UserModel::class, 'user_id');
     }
 }

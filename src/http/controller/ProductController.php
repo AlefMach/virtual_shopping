@@ -1,9 +1,11 @@
 <?php
 
+// Include necessary models and middleware
 include './models/ProductTypeModel.php';
 include './models/ProductModel.php';
 include './http/middlewares/AuthMiddleware.php';
 
+// Ensure user is authenticated before proceeding
 AuthMiddleware::handle();
 
 /**
@@ -12,6 +14,26 @@ AuthMiddleware::handle();
  * Controller responsible for handling requests related to product management.
  */
 class ProductController {
+    private $productTypes;
+    private $products;
+    private $userId;
+
+    /**
+     * ProductController constructor.
+     *
+     * Initializes the controller by fetching product and product type data from the database.
+     */
+    public function __construct() {
+        // Get the user ID from the session
+        $this->userId = $_SESSION['user_id'];
+
+        // Fetch the list of products and product types from the database
+        $this->products = ProductModel::where('user_id', $this->userId)->get();
+        $this->productTypes = ProductTypeModel::where('user_id', $this->userId)
+            ->orWhereNull('user_id')
+            ->get();
+    }
+
     /**
      * Displays the list of products.
      *
@@ -19,9 +41,9 @@ class ProductController {
      * and includes the HTML view file to display the products along with their details.
      */
     public function index() {
-        // Fetch the list of products and product types from the database
-        $products = ProductModel::all();
-        $productTypes = ProductTypeModel::all();
+        // Assign product and product type data to local variables
+        $products = $this->products;
+        $productTypes = $this->productTypes;
 
         // Include the HTML view file for displaying the list of products.
         include './views/product/show.php';
@@ -33,6 +55,10 @@ class ProductController {
      * This method includes the HTML view file for the product creation form.
      */
     public function create() {
+        // Assign product type data to a local variable
+        $productTypes = $this->productTypes;
+
+        // Include the HTML view file for the product creation form.
         include('./views/product/create.php');
     }
 
@@ -68,6 +94,7 @@ class ProductController {
             'type_id' => $typeId,
             'price' => $price,
             'image_path' => $imagePath . $imageName,
+            'user_id' => $this->userId,
         ]);
 
         // Save the product to the database

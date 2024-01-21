@@ -1,9 +1,19 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS product_type (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     tax_rate DECIMAL(5,2) NOT NULL,
+    user_id INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS product (
@@ -12,10 +22,13 @@ CREATE TABLE IF NOT EXISTS product (
     type_id INT NOT NULL,
     price DECIMAL(8,2) NOT NULL,
     image_path VARCHAR(255),
+    user_id INT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (type_id) REFERENCES product_type(id)
+    FOREIGN KEY (type_id) REFERENCES product_type(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
 
 DROP FUNCTION IF EXISTS update_product_updated_at CASCADE;
 
@@ -52,15 +65,6 @@ CREATE TABLE IF NOT EXISTS image (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (product_id) REFERENCES product(id)
 );
-
-CREATE TABLE IF NOT EXISTS users (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 
 INSERT INTO product_type (name, tax_rate) VALUES
     ('Eletrônicos', 18.00),

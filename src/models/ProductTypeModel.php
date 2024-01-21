@@ -20,5 +20,5 @@ class ProductTypeModel extends Model {
      *
      * @var array
      */
-    protected $fillable = ['name', 'tax_rate'];
+    protected $fillable = ['name', 'tax_rate', 'user_id'];
 }

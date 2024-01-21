@@ -48,6 +48,7 @@ class ProductTypeController
             $productType = new ProductTypeModel([
                 'name'=> $name,
                 'tax_rate' => $taxRate,
+                'user_id' => $_SESSION['user_id'],
             ]);
 
             // Save the product type to the database

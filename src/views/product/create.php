@@ -20,10 +20,6 @@
         <label for="type_id">Categoria:</label>
         <select name="type_id" id="type_id" required>
             <?php
-                // Recupere os tipos de produto da tabela product_type
-                $productTypes = ProductTypeModel::all();
-
-                // Preencha as opções do select com os tipos de produto
                 foreach ($productTypes as $type) {
                     echo '<option value="' . $type->id . '">' . $type->name . '</option>';
                 }
