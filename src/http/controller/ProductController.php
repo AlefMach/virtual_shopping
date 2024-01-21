@@ -4,6 +4,7 @@
 include './models/ProductTypeModel.php';
 include './models/ProductModel.php';
 include './http/middlewares/AuthMiddleware.php';
+include './domain/products/ProductDomain.php';
 
 // Ensure user is authenticated before proceeding
 AuthMiddleware::handle();
@@ -43,7 +44,8 @@ class ProductController {
     public function index() {
         // Assign product and product type data to local variables
         $products = $this->products;
-        $productTypes = $this->productTypes;
+
+        $productTypes = ProductDomain::convertTaxRatesToPercentage($this->productTypes);
 
         // Include the HTML view file for displaying the list of products.
         include './views/product/show.php';
