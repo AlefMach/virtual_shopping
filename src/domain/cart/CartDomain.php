@@ -20,7 +20,7 @@ class CartDomain {
         // Calculate the total price including tax
         $total_price = (($price * $percentValue) / 100) + $price;
 
-        return $total_price;
+        return round($total_price, 2);
     }
 
 }

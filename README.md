@@ -24,12 +24,13 @@ The project follows the MVC design pattern:
 
 - **`sql`**: Contains the inital migrate.
 - **`src`**: Contains the core application files.
-  - **`controller`**: Handles user inputs and updates the model.
-  - **`model`**: Represents the application data and business logic.
-  - **`views`**: Displays the data to the user and handles user interface logic.
-  - **`config`**: Configuration files, including database setup.
   - **`assets`**: Publicly accessible files, including CSS styles, javascript and images.
-  - **`vendor`**: Composer dependencies.
+  - **`config`**: Configuration files, including database setup.
+  - **`domain`**: The business logic.
+  - **`http`**: Handles user inputs and updates the model.
+  - **`models`**: Represents the application data.
+  - **`tests`**: Unit test logic.
+  - **`views`**: Displays the data to the user and handles user interface logic.
 - **`Dockerfile`**
 - **`docker-compose.yml`**
 
@@ -37,9 +38,10 @@ The project follows the MVC design pattern:
 
 1. Clone the repository.
 2. Set up the Docker environment using the provided `Dockerfile` and `docker-compose.yml`.
-3. Configure the PostgreSQL database in the `config/database.php` file.
-4. Run the Docker containers.
-5. Install make file ou install manualy dependeces to project.
+3. Copy .env-sample to .env file
+4. Configure the PostgreSQL database in the `.env` file.
+5. Run the Docker containers.
+6. Install make file running `make deps` ou install manualy dependeces to project with docker (use the Makefile with reference).
 
 ## Usage
 
