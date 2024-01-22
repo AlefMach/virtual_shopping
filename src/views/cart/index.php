@@ -18,7 +18,7 @@
                     <th>Imagem</th>
                     <th>Quantidade</th>
                     <th>Preço Unitário</th>
-                    <th>Taxa acrescida %</th>
+                    <th>Taxa %</th>
                     <th>Total</th>
                 </tr>
             </thead>
