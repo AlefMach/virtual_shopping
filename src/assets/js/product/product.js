@@ -13,6 +13,20 @@ function formatDateTime(dateTimeString) {
     return formattedDateTime;
 }
 
-function addToCart(productId) {
-    window.location.href = '/cart';
+function addToCart(productId, tax_rate, price) {
+    $.ajax({
+        url: '/products/add-to-cart',
+        data: {
+            productId: productId,
+            tax_rate: tax_rate,
+            price: price
+        },
+        type: 'POST',
+        success: function (data) {
+            alert('Produto adicionado ao carrinho com sucesso!');
+        },
+        error: function (error) {
+            alert('Erro ao adicionar o produto ao carrinho.');
+        }
+    });
 }

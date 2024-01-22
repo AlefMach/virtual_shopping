@@ -13,3 +13,16 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+
+a.purchase-link {
+    margin-top: 19px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+a.purchase-link:hover {
+    color: #4caf50;
+}

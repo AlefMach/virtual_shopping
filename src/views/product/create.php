@@ -31,7 +31,5 @@
 
         <button type="submit">Salvar Produto</button>
     </form>
-
-    <script src="../../assets/product/create.js"></script>
 </body>
 </html>

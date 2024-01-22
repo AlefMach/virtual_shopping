@@ -1,7 +1,7 @@
 <!-- home.php -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +15,11 @@
         <h2>Bem-vindo à Página Inicial <?php echo $_SESSION['username']; ?></h2>
         
         <ul>
-            <li><a href="/products">Lista de Produtos</a></li>
-            <li><a href="/product/create">Criação de Produtos</a></li>
-            <li><a href="/product-type/create">Cadastrar tipo de produto</a></li>
+            <li><a href="/products">Loja</a></li>
             <li><a href="/cart">Carrinho</a></li>
+            <li><a href="/products-own">Meus produtos</a></li>
+            <li><a href="/product/create">Cadastrar novos produtos</a></li>
+            <li><a href="/product-type/create">Cadastrar tipo de produto</a></li>
         </ul>
     </div>
 </body>
