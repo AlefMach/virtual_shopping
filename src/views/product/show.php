@@ -33,7 +33,7 @@
                     <tr>
                         <td><?php echo $product->name; ?></td>
                         <td><?php echo $product_type->name ?></td>
-                        <td><?php echo $product->price; ?></td>
+                        <td>R$ <?php echo $product->price; ?></td>
                         <td><?php echo $product_type->tax_rate; ?></td>
                         <td><a href="javascript:void(0);" onclick="openImage('<?php echo $product->image_path; ?>')">
                             <img src="<?php echo $product->image_path; ?>" alt="Imagem do Produto" width="80">

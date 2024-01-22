@@ -29,9 +29,9 @@
                         <td><?php echo $cartItem->product_name; ?></td>
                         <td><img src="<?php echo $cartItem->image_path; ?>" alt="Imagem do Produto" width="80"></td>
                         <td><?php echo $cartItem->quantity; ?></td>
-                        <td><?php echo $cartItem->product_price; ?></td>
+                        <td>R$ <?php echo $cartItem->product_price; ?></td>
                         <td><?php echo $cartItem->tax_rate; ?></td>
-                        <td><?php echo $cartItem->total_price; ?></td>
+                        <td>R$ <?php echo $cartItem->total_price; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
