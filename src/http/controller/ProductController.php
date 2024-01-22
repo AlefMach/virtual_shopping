@@ -15,8 +15,6 @@ AuthMiddleware::handle();
  * Controller responsible for handling requests related to product management.
  */
 class ProductController {
-    private $productTypes;
-    private $products;
     private $userId;
 
     /**
@@ -27,12 +25,6 @@ class ProductController {
     public function __construct() {
         // Get the user ID from the session
         $this->userId = $_SESSION['user_id'];
-
-        // Fetch the list of products and product types from the database
-        $this->products = ProductModel::where('user_id', $this->userId)->get();
-        $this->productTypes = ProductTypeModel::where('user_id', $this->userId)
-            ->orWhereNull('user_id')
-            ->get();
     }
 
     /**
@@ -43,9 +35,25 @@ class ProductController {
      */
     public function index() {
         // Assign product and product type data to local variables
-        $products = $this->products;
+        $products = ProductModel::whereNotIn('user_id', [$this->userId])->get();
 
-        $productTypes = ProductDomain::convertTaxRatesToPercentage($this->productTypes);
+        $productTypes = ProductDomain::convertTaxRatesToPercentage(ProductTypeModel::all());
+
+        // Include the HTML view file for displaying the list of products.
+        include './views/product/show.php';
+    }
+
+    /**
+     * Displays the list of products.
+     *
+     * This method fetches the list of products and product types from the database
+     * and includes the HTML view file to display the products along with their details.
+     */
+    public function show() {
+        // Assign product and product type data to local variables
+        $products = ProductModel::where('user_id', $this->userId)->get();
+
+        $productTypes = ProductDomain::convertTaxRatesToPercentage(ProductTypeModel::all());
 
         // Include the HTML view file for displaying the list of products.
         include './views/product/show.php';
@@ -58,7 +66,9 @@ class ProductController {
      */
     public function create() {
         // Assign product type data to a local variable
-        $productTypes = $this->productTypes;
+        $productTypes = ProductTypeModel::where('user_id', $this->userId)
+            ->orWhereNull('user_id')
+            ->get();
 
         // Include the HTML view file for the product creation form.
         include('./views/product/create.php');

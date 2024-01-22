@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Produtos</title>
     <link rel="stylesheet" type="text/css" href="../../assets/css/product/product.css">
-    <script src='./assets/js/product/product.js'></script>
+    <script src='../../assets/js/product/product.js'></script>
 </head>
 <body>
 

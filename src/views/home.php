@@ -15,7 +15,8 @@
         <h2>Bem-vindo à Página Inicial <?php echo $_SESSION['username']; ?></h2>
         
         <ul>
-            <li><a href="/products">Lista de Produtos</a></li>
+            <li><a href="/products">Produtos para comprar</a></li>
+            <li><a href="/products-own">Meus produtos</a></li>
             <li><a href="/product/create">Criação de Produtos</a></li>
             <li><a href="/product-type/create">Cadastrar tipo de produto</a></li>
             <li><a href="/cart">Carrinho</a></li>
