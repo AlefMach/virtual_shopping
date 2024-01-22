@@ -36,7 +36,9 @@ class UserController
                 exit();
             } else {
                 // If the user already exists, display an alert
-                echo '<script>alert("User already exists!");</script>';
+                // Invalid credentials, redirect back to the login page
+                header('Location: /register?error=true');
+                exit();
             }
         }
     }
