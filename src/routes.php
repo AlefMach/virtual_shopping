@@ -21,4 +21,4 @@ $router->addRoute('register', 'UserController', 'index');
 $router->addRoute('register/create', 'UserController', 'create');
 
 $router->addRoute('cart', 'CartController', 'index');
-$router->addRoute('cart/update', 'CartController', 'update');
+$router->addRoute('products/add-to-cart', 'CartController', 'addToCart');

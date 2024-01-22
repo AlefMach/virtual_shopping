@@ -1,12 +1,13 @@
 <!-- app/views/product/show.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listagem de Produtos</title>
     <link rel="stylesheet" type="text/css" href="../../assets/css/product/product.css">
     <script src='../../assets/js/product/product.js'></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
 
@@ -39,7 +40,7 @@
                         </a></td>
                         <td><script>document.write(formatDateTime("<?php echo $product->created_at; ?>"));</script></td>
                         <td><script>document.write(formatDateTime("<?php echo $product->updated_at; ?>"));</script></td>
-                        <td><a href="javascript:void(0);" onclick="addToCart(<?php echo $product->id; ?>)">Comprar</a></td>
+                        <td><a class="purchase-link" href="javascript:void(0);" onclick="addToCart(<?php echo $product->id; ?>, '<?php echo $product_type->tax_rate; ?>', <?php echo $product->price; ?>)">Comprar</a></td>
                     </tr>
                 <?php endif; ?>
             <?php endforeach; ?>

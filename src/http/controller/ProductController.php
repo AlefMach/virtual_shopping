@@ -44,7 +44,7 @@ class ProductController {
     }
 
     /**
-     * Displays the list of products.
+     * Displays the list of own products.
      *
      * This method fetches the list of products and product types from the database
      * and includes the HTML view file to display the products along with their details.
@@ -113,7 +113,7 @@ class ProductController {
         $product->save();
 
         // Redirect to the product list page
-        header('Location: /products');
+        header('Location: /products-own');
         exit();
     }
 }

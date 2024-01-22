@@ -1,55 +1,45 @@
+<!-- cart/index.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../../assets/css/cart/cart.css">
 </head>
 <body>
-    <h1>Carrinho de Compras</h1>
 
-    <table>
-        <tr>
-            <th>Produto</th>
-            <th>Quantidade</th>
-            <th>Ações</th>
-        </tr>
-        <?php foreach ($cartItems as $item): ?>
-            <tr>
-                <td><?= $item['product_name']; ?></td>
-                <td>
-                    <form method="post" action="/cart/update">
-                        <input type="hidden" name="product_id" value="<?= $item['id']; ?>">
-                        <input type="number" name="quantity" value="<?= $item['quantity']; ?>" min="1">
-                        <button type="submit">Atualizar</button>
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="/cart/remove">
-                        <input type="hidden" name="product_id" value="<?= $item['id']; ?>">
-                        <button type="submit">Remover</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+    <h2>Carrinho de Compras</h2>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Produto</th>
+                    <th>Imagem</th>
+                    <th>Quantidade</th>
+                    <th>Preço Unitário</th>
+                    <th>Taxa acrescida %</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through cart items and display data -->
+                <?php foreach ($cartItems as $cartItem): ?>
+                    <tr>
+                        <td><?php echo $cartItem->product_name; ?></td>
+                        <td><img src="<?php echo $cartItem->image_path; ?>" alt="Imagem do Produto" width="80"></td>
+                        <td><?php echo $cartItem->quantity; ?></td>
+                        <td><?php echo $cartItem->product_price; ?></td>
+                        <td><?php echo $cartItem->tax_rate; ?></td>
+                        <td><?php echo $cartItem->total_price; ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="box-button-cart">
+        <button>Finalizar</button>
+    </div>
 
-    <a href="/products">Continuar Comprando</a>
 </body>
 </html>
